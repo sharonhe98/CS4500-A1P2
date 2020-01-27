@@ -7,7 +7,8 @@
 class Array : public Object
 {
     public:
-        Object *items;
+        // items is an array of object pointers
+        Object **items;
         size_t capacity;
         size_t used;
 
@@ -16,7 +17,7 @@ class Array : public Object
        {
            capacity = 2;
            used = 0;
-           items = new Object[capacity];
+           items = new Object*[capacity];
        }
 
         //destructor
@@ -26,63 +27,22 @@ class Array : public Object
        }
 
         // hash and return the hash value
-       size_t hash_me()
-       {
-           // this will be unique because of the pointer.
-           size_t ret =  (size_t)items * capacity * used;
-           hash__ = ret;
-           return ret;
-       }
+        size_t hash_me();
 
-       // putting an item at the end of the array
-        void append(Object oo)
-        {
-            // expand when needed
-            if(capacity == used)
-            {
-                capacity *= 2;
-                Object *temp = items;
-                items = new Object[capacity];
-                memcpy(items, temp, used * sizeof(Object));
-                delete(temp);
-            }
-
-            used ++;
-            items[used] = oo;
-        }
+        // putting an item at the end of the array
+        // return 0 on success, -1 on failure
+        int append(Object* oo);
 
         // get the n'th item in the array
-        Object get(int nn)
-        {
-            if(nn >= used)
-            {
-                perror("index overflow");
-                abort();
-            }
+        Object* get(int nn);
 
-            else
-            {
-                return items[nn];
-            }
-            
-        }
+        int length();
 
-        int length()
-        {
-            return used;
-        }
 
         // this compares two arrays, to see if they are the same
-        int equals(Array aa)
-        {
-            size_t tthis = hash_me();
-            size_t tthat = aa.hash_me();
+        bool equals(Array aa);
 
-            return (tthis == tthat);
-        }
-
-        void print()
-        {
-            printf("%ld\n", hash_me());
-        }
+        // print content
+        // -1 on failure, 0 on success
+        void print();
 };

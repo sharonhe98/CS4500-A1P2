@@ -1,4 +1,3 @@
-#pragma once
 #include <iostream>
 #include "array.h"
 #include <assert.h>
@@ -20,7 +19,7 @@ main(int argc, char **argv)
     Array aa;
     for(; ii < 100; ii++)
     {
-        Integer jj(ii);
+        Integer *jj = new Integer(ii);
         aa.append(jj);
     }
 
@@ -31,7 +30,7 @@ main(int argc, char **argv)
     ii = 0;
     for(; ii < 100; ii++)
     {
-        Integer dd(ii);
+        Integer *dd = new Integer(ii);
         bb.append(dd);
     }
     assert(aa.equals(bb) == 0);
