@@ -19,8 +19,8 @@ main(int argc, char **argv)
     Array aa;
     for(; ii < 100; ii++)
     {
-        Integer *jj = new Integer(ii);
-        aa.append(jj);
+        Integer jj = Integer(ii);
+        aa.append(&jj);
     }
 
     assert(aa.length() == 100);
@@ -30,8 +30,8 @@ main(int argc, char **argv)
     ii = 0;
     for(; ii < 100; ii++)
     {
-        Integer *dd = new Integer(ii);
-        bb.append(dd);
+        Integer dd = Integer(ii);
+        bb.append(&dd);
     }
     assert(aa.equals(bb) == 0);
     assert(aa.equals(aa) == 1);

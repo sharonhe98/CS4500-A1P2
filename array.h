@@ -33,11 +33,14 @@ class Array : public Object
         // return 0 on success, -1 on failure
         int append(Object* oo);
 
-        // get the n'th item in the array
+        // get the n'th item in the array.
         Object* get(int nn);
 
+        // returns the length of the array.
         int length();
 
+        // get the index of an object in the array
+        int index_of(Object* oo);
 
         // this compares two arrays, to see if they are the same
         bool equals(Array aa);
