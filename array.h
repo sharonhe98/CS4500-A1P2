@@ -7,24 +7,11 @@
 class Array : public Object
 {
     public:
-        // items is an array of object pointers
-        Object **items;
-        size_t capacity;
-        size_t used;
-
         //constructor
-       Array() 
-       {
-           capacity = 2;
-           used = 0;
-           items = new Object*[capacity];
-       }
+       Array();
 
         //destructor
-       ~Array()
-       {
-           delete(items);
-       }
+       ~Array();
 
         // hash and return the hash value
         virtual size_t hash_me();
