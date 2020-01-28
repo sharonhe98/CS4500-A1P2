@@ -27,25 +27,29 @@ class Array : public Object
        }
 
         // hash and return the hash value
-        size_t hash_me();
+        virtual size_t hash_me();
 
         // putting an item at the end of the array
         // return 0 on success, -1 on failure
-        int append(Object* oo);
+        virtual int append(Object* oo);
 
         // get the n'th item in the array.
-        Object* get(int nn);
+        virtual Object* get(int nn);
 
         // returns the length of the array.
-        int length();
+        virtual int length();
+
+        // set n'th element to the given object
+        // users are responsible for free'ing the pointer
+        virtual int set(int nn, Object *oo);
 
         // get the index of an object in the array
-        int index_of(Object* oo);
+        virtual int index_of(Object* oo);
 
         // this compares two arrays, to see if they are the same
-        bool equals(Array aa);
+        virtual bool equals(Array aa);
 
         // print content
         // -1 on failure, 0 on success
-        void print();
+        virtual void print();
 };
