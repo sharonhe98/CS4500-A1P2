@@ -17,21 +17,26 @@ main(int argc, char **argv)
 {
     int ii = 0;
     Array aa;
+    
+    // test for append
     for(; ii < 100; ii++)
     {
-        Integer jj = Integer(ii);
-        aa.append(&jj);
+        Integer *jj = new Integer(ii);
+        aa.append(jj);
     }
 
+    // test for length
     assert(aa.length() == 100);
     Array bb;
+
+
 
     assert(aa.equals(bb) == 0);
     ii = 0;
     for(; ii < 100; ii++)
     {
-        Integer dd = Integer(ii);
-        bb.append(&dd);
+        Integer *dd = new Integer(ii);
+        bb.append(dd);
     }
     assert(aa.equals(bb) == 0);
     assert(aa.equals(aa) == 1);
